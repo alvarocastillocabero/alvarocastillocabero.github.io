@@ -21,14 +21,23 @@
             width: 100%;
             height: 100%;
         }
+        
+        .buttons-container {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 1000;
+        }
     </style>
 </head>
 
 <body>
 
     <div id="map-container">
-        <button id="btn-diciembre">Diciembre 2021</button>
-        <button id="btn-enero">Enero 2022</button>
+        <div class="buttons-container">
+            <button id="btn-diciembre">Diciembre</button>
+            <button id="btn-enero">Enero</button>
+        </div>
         <div id="map"></div>
     </div>
     <script src="script.js"></script>
