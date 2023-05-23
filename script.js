@@ -38,8 +38,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         var startDate = new Date(Date.parse(startTimestamp));
                         var endDate = new Date(Date.parse(endTimestamp));
 
-                        var offsetLat = lat + (Math.random() - 0.5) * 0.0002;
-                        var offsetLng = lng + (Math.random() - 0.5) * 0.0002;
+                        var offsetLat = lat + (Math.random() - 0.5) * 0.003;
+                        var offsetLng = lng + (Math.random() - 0.5) * 0.003;
 
                         var contenidoMarcador = '<strong>' + obj.placeVisit.location.name + '</strong><br>' +
                             'Fecha de entrada: ' + startDate.toLocaleString() + '<br>' +
