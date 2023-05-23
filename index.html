@@ -2,16 +2,7 @@
 <html>
 
 <head>
-    <title>Mostrar información de Google Maps en el mapa</title>
-    <!-- Incluye Leaflet -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-
-    <!-- Incluye Leaflet.markercluster después de Leaflet -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.Default.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/leaflet.markercluster.js"></script>
-
+    <title>Selección de archivos JSON</title>
     <style>
         #map {
             height: 800px;
@@ -20,7 +11,14 @@
 </head>
 
 <body>
+    <button id="btn-diciembre">Diciembre 2021</button>
+    <button id="btn-enero">Enero 2022</button>
+
     <div id="map"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
+
     <script src="script.js"></script>
 </body>
 
