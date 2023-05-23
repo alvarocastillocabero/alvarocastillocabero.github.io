@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
-    var map = L.map('map').setView([41.3851, 2.1734], 12);
+    var map = L.map('map').setView([41.40538683093288, 2.1661349984841816], 13);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
-        maxZoom: 21,
+        maxZoom: 20,
     }).addTo(map);
 
     var btnDiciembre = document.getElementById('btn-diciembre');
@@ -12,15 +12,15 @@ document.addEventListener('DOMContentLoaded', function() {
     var urlDiciembre = 'data_diciembre.json';
     var urlEnero = 'data_enero.json';
 
-    var marcadores = []; // Array para almacenar los marcadores
+    var marcadores = [];
 
     btnDiciembre.addEventListener('click', function() {
-        limpiarMarcadores(); // Limpiar los marcadores antes de cargar nuevos datos
+        limpiarMarcadores();
         cargarDatos(urlDiciembre);
     });
 
     btnEnero.addEventListener('click', function() {
-        limpiarMarcadores(); // Limpiar los marcadores antes de cargar nuevos datos
+        limpiarMarcadores();
         cargarDatos(urlEnero);
     });
 
@@ -45,10 +45,13 @@ document.addEventListener('DOMContentLoaded', function() {
                             'Fecha de entrada: ' + startDate.toLocaleString() + '<br>' +
                             'Fecha de salida: ' + endDate.toLocaleString();
 
-                        var marcador = L.marker([offsetLat, offsetLng]).addTo(map) // Agregar el marcador al mapa
-                            .bindPopup(contenidoMarcador);
+                        var marcador = L.marker([offsetLat, offsetLng]).addTo(map)
+                            .bindPopup(contenidoMarcador)
+                            .on('click', function() {
+                                map.flyTo([offsetLat, offsetLng], 17); // Hace zoom al marcador con nivel de zoom 17
+                            });
 
-                        marcadores.push(marcador); // Agregar el marcador al array de marcadores
+                        marcadores.push(marcador);
                     }
                 });
             });
@@ -56,9 +59,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function limpiarMarcadores() {
         marcadores.forEach(function(marcador) {
-            map.removeLayer(marcador); // Eliminar cada marcador del mapa
+            map.removeLayer(marcador);
         });
 
-        marcadores = []; // Vaciar el array de marcadores
+        marcadores = [];
     }
 });
