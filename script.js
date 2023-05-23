@@ -12,19 +12,19 @@ document.addEventListener('DOMContentLoaded', function() {
     var urlDiciembre = 'data_diciembre.json';
     var urlEnero = 'data_enero.json';
 
-    var marcadores = L.layerGroup().addTo(map); // Crear un LayerGroup para los marcadores
+    var marcadores = []; // Array para almacenar los marcadores
 
     btnDiciembre.addEventListener('click', function() {
+        limpiarMarcadores(); // Limpiar los marcadores antes de cargar nuevos datos
         cargarDatos(urlDiciembre);
     });
 
     btnEnero.addEventListener('click', function() {
+        limpiarMarcadores(); // Limpiar los marcadores antes de cargar nuevos datos
         cargarDatos(urlEnero);
     });
 
     function cargarDatos(url) {
-        marcadores.clearLayers(); // Vaciar los marcadores antes de cargar nuevos datos
-        //eliminados
         fetch(url)
             .then(response => response.json())
             .then(data => {
@@ -45,10 +45,20 @@ document.addEventListener('DOMContentLoaded', function() {
                             'Fecha de entrada: ' + startDate.toLocaleString() + '<br>' +
                             'Fecha de salida: ' + endDate.toLocaleString();
 
-                        L.marker([offsetLat, offsetLng]).addTo(marcadores) // Agregar el marcador al LayerGroup
+                        var marcador = L.marker([offsetLat, offsetLng]).addTo(map) // Agregar el marcador al mapa
                             .bindPopup(contenidoMarcador);
+
+                        marcadores.push(marcador); // Agregar el marcador al array de marcadores
                     }
                 });
             });
+    }
+
+    function limpiarMarcadores() {
+        marcadores.forEach(function(marcador) {
+            map.removeLayer(marcador); // Eliminar cada marcador del mapa
+        });
+
+        marcadores = []; // Vaciar el array de marcadores
     }
 });
