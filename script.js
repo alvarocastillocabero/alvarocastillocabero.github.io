@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function cargarDatos(url) {
         marcadores.clearLayers(); // Vaciar los marcadores antes de cargar nuevos datos
-
+        //eliminados
         fetch(url)
             .then(response => response.json())
             .then(data => {
