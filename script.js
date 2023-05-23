@@ -60,8 +60,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         marcadores = []; // Vaciar el array de marcadores
-        map = undefined;
-        map = L.map('map').setView([41.3851, 2.1734], 12);
+        delete map;
+        var map = L.map('map').setView([41.3851, 2.1734], 12);
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
