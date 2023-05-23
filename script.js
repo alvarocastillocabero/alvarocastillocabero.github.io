@@ -38,8 +38,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         var startDate = new Date(Date.parse(startTimestamp));
                         var endDate = new Date(Date.parse(endTimestamp));
 
-                        var offsetLat = lat + (Math.random() - 0.5) * 0.0003;
-                        var offsetLng = lng + (Math.random() - 0.5) * 0.0003;
+                        var offsetLat = lat + (Math.random() - 0.5) * 0.0002;
+                        var offsetLng = lng + (Math.random() - 0.5) * 0.0002;
 
                         var contenidoMarcador = '<strong>' + obj.placeVisit.location.name + '</strong><br>' +
                             'Fecha de entrada: ' + startDate.toLocaleString() + '<br>' +
@@ -60,13 +60,5 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         marcadores = []; // Vaciar el array de marcadores
-        delete map;
-        var map = L.map('map').setView([41.3851, 2.1734], 12);
-
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
-            maxZoom: 18,
-        }).addTo(map);
-
     }
 });
