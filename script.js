@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    var map = L.map('map').setView([41.40538683093288, 2.1661349984841816], 13);
+    var map = L.map('map').setView([41.41265154966755, 2.1672552909076073], 13);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
@@ -38,18 +38,19 @@ document.addEventListener('DOMContentLoaded', function() {
                         var startDate = new Date(Date.parse(startTimestamp));
                         var endDate = new Date(Date.parse(endTimestamp));
 
-                        var offsetLat = lat + (Math.random() - 0.5) * 0.0003;
-                        var offsetLng = lng + (Math.random() - 0.5) * 0.0003;
+                        var offsetLat = lat + (Math.random() - 0.5) * 0.003;
+                        var offsetLng = lng + (Math.random() - 0.5) * 0.003;
 
                         var contenidoMarcador = '<strong>' + obj.placeVisit.location.name + '</strong><br>' +
                             'Fecha de entrada: ' + startDate.toLocaleString() + '<br>' +
                             'Fecha de salida: ' + endDate.toLocaleString();
 
                         var marcador = L.marker([offsetLat, offsetLng]).addTo(map)
-                            .bindPopup(contenidoMarcador)
-                            .on('click', function() {
-                                map.flyTo([offsetLat, offsetLng], 17); // Hace zoom al marcador con nivel de zoom 17
-                            });
+                            .bindPopup(contenidoMarcador);
+
+                        marcador.on('click', function() {
+                            map.flyTo(marcador.getLatLng(), 15); // Hace zoom al marcador cuando se hace clic en él
+                        });
 
                         marcadores.push(marcador);
                     }
