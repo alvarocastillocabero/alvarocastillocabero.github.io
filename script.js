@@ -12,6 +12,8 @@ document.addEventListener('DOMContentLoaded', function() {
     var urlDiciembre = 'data_diciembre.json';
     var urlEnero = 'data_enero.json';
 
+    var marcadores = L.layerGroup().addTo(map); // Crear un LayerGroup para los marcadores
+
     btnDiciembre.addEventListener('click', function() {
         cargarDatos(urlDiciembre);
     });
@@ -21,6 +23,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function cargarDatos(url) {
+        marcadores.clearLayers(); // Vaciar los marcadores antes de cargar nuevos datos
+
         fetch(url)
             .then(response => response.json())
             .then(data => {
@@ -41,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             'Fecha de entrada: ' + startDate.toLocaleString() + '<br>' +
                             'Fecha de salida: ' + endDate.toLocaleString();
 
-                        L.marker([offsetLat, offsetLng]).addTo(map)
+                        L.marker([offsetLat, offsetLng]).addTo(marcadores) // Agregar el marcador al LayerGroup
                             .bindPopup(contenidoMarcador);
                     }
                 });
