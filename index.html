@@ -6,6 +6,10 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <style>
+        #buttons {
+            margin-bottom: 10px;
+        }
+        
         #map {
             height: 900px;
         }
@@ -13,9 +17,10 @@
 </head>
 
 <body>
-    <button id="btn-diciembre">Diciembre 2021</button>
-    <button id="btn-enero">Enero 2022</button>
-    <br>
+    <div id="buttons">
+        <button class="btn" id="btn-diciembre">Diciembre 2021</button>
+        <button class="btn" id="btn-enero">Enero 2022</button>
+    </div>
     <div id="map"></div>
     <script src="script.js"></script>
 
